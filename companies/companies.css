@@ -35,3 +35,14 @@ div.count span {
 .menu-item {
 	height: 40%;
 }
+
+.companies {
+	overflow-y: auto;
+	height:15em;
+}
+
+.company {
+	border:1px solid black;
+	border-collapse: collapse;
+	padding: 0.5em;
+}
