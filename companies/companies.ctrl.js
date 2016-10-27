@@ -13,10 +13,19 @@ function Controller($scope, $http) {
 	.success(function(data) {
 		$scope.countCompany = data.list.length;
 		$scope.companies = data.list;
+		console.log(data.list);
 		makeCountriesMap(data.list);
 		makeArrayColor(countriesMap.size);
 		drawChart(Array.from(countriesMap.keys()), Array.from(countriesMap.values()), arrayColorForChart);
 		})
+
+	$http.get('http://codeit.pro/frontTestTask/news/getList')
+	.success(function(data) {
+		console.log(data);
+		$scope.news = data.list;
+		console.log(data.list);
+	})
+
 	};
 	init();
 
