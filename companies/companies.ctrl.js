@@ -5,18 +5,18 @@ angular
 .module('myApp.companies')
 .controller('companies.ctrl', Controller);
 function Controller($scope, $http) {
+	$scope.load = true;
 	const countriesMap = new Map();
 	const arrayColorForChart = [];
 	$scope.myInterval = 3000;
 	$scope.chartFlag =  true;
 	$scope.partnersFlag = false;
-
 	function init () {
+	
 	$http.get('http://codeit.pro/frontTestTask/company/getList')
 	.success(function(data) {
 		$scope.countCompany = data.list.length;
 		$scope.companies = data.list;
-		console.log(data.list);
 		makeCountriesMap(data.list);
 		makeArrayColor(countriesMap.size);
 		drawChart(Array.from(countriesMap.keys()), Array.from(countriesMap.values()), arrayColorForChart);
@@ -25,11 +25,11 @@ function Controller($scope, $http) {
 	$http.get('http://codeit.pro/frontTestTask/news/getList')
 	.success(function(data) {
 		$scope.news = data.list;
+		$scope.load = false;
 	})
-
 	};
 	init();
-
+	
 	function drawChart (labels, data, backgroundColor) {
 		var ctx = document.getElementById("myChart");
 		var data = {
@@ -183,7 +183,6 @@ function Controller($scope, $http) {
 	$scope.sortPartnersByPercentage = function () {
 		let temp = $scope.partners;
 		$scope.partners = {};
-		console.log(temp);
 		temp.sort(function(a, b, percent){
 			if (a.percent > b.percent) {
 				return 1;
@@ -193,7 +192,7 @@ function Controller($scope, $http) {
 			}
 			return 0;
 		});
-		console.log(temp);
+
 		$scope.partners = temp;
 	}
 

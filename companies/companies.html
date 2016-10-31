@@ -6,18 +6,22 @@
 			<div class="head">
 				<span>Total Companies</span>
 			</div>
+			<div class="loader" ng-show = 'load'></div>
 			<!-- begin circle -->
-			<div class="circle">
+			<div class="circle" ng-show = '!load'>
 				<div class="count"><span>{{countCompany}}</span></div>
 			</div>
 			<!-- end circle -->
 		</div>
 		<div class="col-md-6 menu-item">
-
+			
 			<div class="head">
 				<span>List of Companies</span>
 			</div>
-			<div class="companies"> 
+
+			<div class="loader " ng-show = 'load'></div>
+
+			<div class="companies " ng-show ='!load'> 
 					<div class="company" ng-repeat= 'company in companies' ng-click='getPartners($index)'>{{company.name}}</div>	
 			</div>
 
@@ -36,10 +40,12 @@
 	<div class="row">
 		<div class="col-md-6 menu-item">
 
-			<div class="head">
+			<div class="head" ng-show ='!load'>
 				<span>Companies by Location</span>
 				<i class="fa fa-arrow-circle-left" aria-hidden="true" ng-click = 'changeChartFlag()' ng-show='!chartFlag'></i>
 			</div>
+
+
 			<div class="companies" ng-show="!chartFlag">
 				<div class="company" ng-repeat ='company in companiesByCountry'>{{company.name}}</div>
 			</div>
@@ -47,11 +53,11 @@
 		</div>
 		<div class="col-md-6 menu-item">
 
-			<div class="head">
+			<div class="head" ng-show ='!load'>
 				<span>News</span>
 			</div>
-
-			<div id="slides_control">
+		
+			<div id="slides_control" >
 			 	<carousel interval="myInterval">
 			    <slide ng-repeat = "slide in news" active="slide.active" class="row">
 			       <!-- <div class="row"> -->
