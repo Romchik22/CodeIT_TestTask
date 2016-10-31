@@ -77,7 +77,7 @@ div.count span {
 
 .item {
 	padding-bottom: 3.25em;
-	height: 22em;
+	height: 24em;
 	background-color:rgb(241,252, 95);
 }
 
@@ -85,28 +85,36 @@ div.count span {
 	margin: 0;
 }
 
-.partners {
-	height: 22em;
+.wrapper-partners {
+	height: 25em;
 	overflow-x: auto;
-	text-align: center;
-	position:relative;
 	border: 1px solid black;
+	
 }
 
-.wrapper-partners {
-	position:absolute;
-	bottom: 0;
-}
 .partner {
+	position: relative;
 	display: inline-block;
-	width: 5em;
-	border: 1px solid black;
+	width: 10em;
+	height:90%;
 	margin-left: 2em;
 	vertical-align: bottom;
-	text-align: left;
-	padding-bottom: 1em;
 }
-.partner span {
+
+.bar {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+.bar-text {
 	display: inline-block;
-	transform: rotateZ(-90deg)
+	border-bottom: 0.25em solid blue;
+	width:100%;
+}
+
+.sort span {
+	display: inline-block;
+	float: right;
+	margin-right: 1em;
 }

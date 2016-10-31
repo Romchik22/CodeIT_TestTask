@@ -24,10 +24,12 @@
 		</div>
 	</div>
 
-	<div class='partners'>
-		<div class="wrapper-partners">
-			<div class="partner" ng-repeat="partner in partners" style= "height:{{partner.height}}; background-color: {{partner.backgroundColor}}"> 		<span>{{partner.name}} - {{partner.percent}}</span>
+	<div class='wrapper-partners' ng-show='partnersFlag'>
+	<div class="head sort"> <span ng-click ='sortPartnersByName()'>Name</span> <span ng-click ='sortPartnersByPercentage()'>Percent</span> <span>Sort by:</span> </div>
+		<div class="partner"  ng-repeat="partner in partners">
+			<div class="bar" style= "height:{{partner.height}}; background-color: {{partner.backgroundColor}}"> 		
 			</div>
+			<div class="bar-text">{{partner.name}} - {{partner.percent}}</div>
 		</div>
 	</div>
 

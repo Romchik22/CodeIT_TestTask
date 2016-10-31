@@ -9,6 +9,7 @@ function Controller($scope, $http) {
 	const arrayColorForChart = [];
 	$scope.myInterval = 3000;
 	$scope.chartFlag =  true;
+	$scope.partnersFlag = false;
 
 	function init () {
 	$http.get('http://codeit.pro/frontTestTask/company/getList')
@@ -123,7 +124,7 @@ function Controller($scope, $http) {
 		$scope.partners = [];
 		let temp = $scope.companies[index].partners;
 		let percent = calcPercentPartners(temp);
-		let height = percent.map(function(x) {return 50 * x});
+		let height = percent.map(function(x) {return 20 * x});
 
 		for(let i = 0; i < temp.length; i++) {
 			let partner = {};
@@ -135,6 +136,8 @@ function Controller($scope, $http) {
 
 			$scope.partners.push(partner);
 		}
+
+		$scope.partnersFlag = true;
 	}
 
 	function calcPercentPartners(partners) {
@@ -149,6 +152,50 @@ function Controller($scope, $http) {
 		})
 	}
 
+	function compare(a, b, property) {
+
+		if (a.property > b.property) {
+		return 1;
+		}
+
+		if (a.property < b.property) {
+		return -1;
+		}
+		
+		return 0;
+	}
+
+	$scope.sortPartnersByName = function () {
+		let temp = $scope.partners;
+		$scope.partners = {};
+		temp.sort(function(a, b, name){
+			if (a.name > b.name) {
+				return 1;
+			}
+			if (a.name < b.name) {
+				return -1;
+			}
+			return 0;
+		});
+		$scope.partners = temp;
+	}
+
+	$scope.sortPartnersByPercentage = function () {
+		let temp = $scope.partners;
+		$scope.partners = {};
+		console.log(temp);
+		temp.sort(function(a, b, percent){
+			if (a.percent > b.percent) {
+				return 1;
+			}
+			if (a.percent < b.percent) {
+				return -1;
+			}
+			return 0;
+		});
+		console.log(temp);
+		$scope.partners = temp;
+	}
 
 
 }
