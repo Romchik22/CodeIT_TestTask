@@ -21,7 +21,7 @@ function Controller($scope, $http, $location) {
 				pass: $scope.password
 			});
 
-			let  config = {
+			let config = {
 				headers : {
 					'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
 				}

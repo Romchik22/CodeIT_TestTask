@@ -28,15 +28,16 @@ function Controller($scope, $http) {
 		$scope.load = false;
 	})
 	};
+
 	init();
 	
-	function drawChart (labels, data, backgroundColor) {
+	function drawChart (labels, dat, backgroundColor) {
 		var ctx = document.getElementById("myChart");
 		var data = {
 		    labels: labels,
 	    	datasets: [
 	        	{
-	            data: [34, 18, 23, 4, 18, 3],
+	            data: dat,
 	            backgroundColor: backgroundColor,
 	        }]
 		};
@@ -153,15 +154,12 @@ function Controller($scope, $http) {
 	}
 
 	function compare(a, b, property) {
-
 		if (a.property > b.property) {
-		return 1;
+			return 1;
 		}
-
 		if (a.property < b.property) {
-		return -1;
+			return -1;
 		}
-		
 		return 0;
 	}
 
@@ -195,7 +193,5 @@ function Controller($scope, $http) {
 
 		$scope.partners = temp;
 	}
-
-
 }
 })();
