@@ -74,11 +74,39 @@ div.count span {
 .title {
 	text-align: left;
 }
+
 .item {
 	padding-bottom: 3.25em;
 	height: 22em;
 	background-color:rgb(241,252, 95);
 }
+
 .item.row {
 	margin: 0;
+}
+
+.partners {
+	height: 22em;
+	overflow-x: auto;
+	text-align: center;
+	position:relative;
+	border: 1px solid black;
+}
+
+.wrapper-partners {
+	position:absolute;
+	bottom: 0;
+}
+.partner {
+	display: inline-block;
+	width: 5em;
+	border: 1px solid black;
+	margin-left: 2em;
+	vertical-align: bottom;
+	text-align: left;
+	padding-bottom: 1em;
+}
+.partner span {
+	display: inline-block;
+	transform: rotateZ(-90deg)
 }

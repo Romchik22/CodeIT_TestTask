@@ -119,6 +119,37 @@ function Controller($scope, $http) {
 		$scope.chartFlag =  true;
 	}
 
+	$scope.getPartners = function (index) {
+		$scope.partners = [];
+		let temp = $scope.companies[index].partners;
+		let percent = calcPercentPartners(temp);
+		let height = percent.map(function(x) {return 50 * x});
+
+		for(let i = 0; i < temp.length; i++) {
+			let partner = {};
+
+			partner.name = temp[i].name;
+			partner.percent = percent[i].toFixed(2);
+			partner.height = height[i] + 'em';
+			partner.backgroundColor = getRandomColor();
+
+			$scope.partners.push(partner);
+		}
+	}
+
+	function calcPercentPartners(partners) {
+		let sum = 0;
+		let percentArray = [];
+		for(let i = 0; i < partners.length; i++) {
+			sum += partners[i].value;
+			percentArray.push(partners[i].value);
+		}
+		return percentArray.map(function(x) {
+			return x / sum;
+		})
+	}
+
+
 
 }
 })();

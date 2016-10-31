@@ -18,9 +18,16 @@
 				<span>List of Companies</span>
 			</div>
 			<div class="companies"> 
-					<div class="company" ng-repeat= 'company in companies'>{{company.name}}</div>	
+					<div class="company" ng-repeat= 'company in companies' ng-click='getPartners($index)'>{{company.name}}</div>	
 			</div>
 
+		</div>
+	</div>
+
+	<div class='partners'>
+		<div class="wrapper-partners">
+			<div class="partner" ng-repeat="partner in partners" style= "height:{{partner.height}}; background-color: {{partner.backgroundColor}}"> 		<span>{{partner.name}} - {{partner.percent}}</span>
+			</div>
 		</div>
 	</div>
 
