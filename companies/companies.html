@@ -29,8 +29,12 @@
 
 			<div class="head">
 				<span>Companies by Location</span>
+				<i class="fa fa-arrow-circle-left" aria-hidden="true" ng-click = 'changeChartFlag()' ng-show='!chartFlag'></i>
 			</div>
-			<div> <canvas id="myChart" width="400" height="400"></canvas> </div>
+			<div class="companies" ng-show="!chartFlag">
+				<div class="company" ng-repeat ='company in companiesByCountry'>{{company.name}}</div>
+			</div>
+			<div ng-show='chartFlag'> <canvas id="myChart" width="400" height="400" ng-click="click($event)"></canvas> </div>
 		</div>
 		<div class="col-md-6 menu-item">
 

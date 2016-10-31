@@ -8,6 +8,7 @@ function Controller($scope, $http) {
 	const countriesMap = new Map();
 	const arrayColorForChart = [];
 	$scope.myInterval = 3000;
+	$scope.chartFlag =  true;
 
 	function init () {
 	$http.get('http://codeit.pro/frontTestTask/company/getList')
@@ -22,9 +23,7 @@ function Controller($scope, $http) {
 
 	$http.get('http://codeit.pro/frontTestTask/news/getList')
 	.success(function(data) {
-		console.log(data);
 		$scope.news = data.list;
-		console.log(data.list);
 	})
 
 	};
@@ -54,6 +53,11 @@ function Controller($scope, $http) {
 				}
 			}
 		});
+
+		$scope.click = function (e) {
+			filerCompaniesByCountry($scope.companies, $scope.myPieChart.getElementsAtEvent(e)[0]._view.label)
+			$scope.chartFlag = false;
+		}	
 	}
 
 	function getRandomColor() {
@@ -101,5 +105,20 @@ function Controller($scope, $http) {
 	$scope.getDate = function (date) {
 		return formatDate(new Date(parseInt(date)));
 	}
+
+	function filerCompaniesByCountry(list, country) {
+		$scope.companiesByCountry = [];
+		for(let i = 0; i < list.length; i++) {
+			if(list[i].location.name == country) {
+				$scope.companiesByCountry.push(list[i]);
+			}
+		}
+	}
+
+	$scope.changeChartFlag = function () {
+		$scope.chartFlag =  true;
+	}
+
+
 }
 })();
