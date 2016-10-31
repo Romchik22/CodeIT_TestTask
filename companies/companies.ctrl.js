@@ -7,6 +7,7 @@ angular
 function Controller($scope, $http) {
 	const countriesMap = new Map();
 	const arrayColorForChart = [];
+	$scope.myInterval = 3000;
 
 	function init () {
 	$http.get('http://codeit.pro/frontTestTask/company/getList')
@@ -81,6 +82,24 @@ function Controller($scope, $http) {
 		for(let i = 0; i < length; i++) {
 			arrayColorForChart[i] = getRandomColor();
 		}
+	}
+	
+	function formatDate(date) {
+
+	  var dd = date.getDate();
+	  if (dd < 10) dd = '0' + dd;
+
+	  var mm = date.getMonth() + 1;
+	  if (mm < 10) mm = '0' + mm;
+
+	  var yy = date.getFullYear() % 100;
+	  if (yy < 10) yy = '0' + yy;
+
+	  return dd + '.' + mm + '.' + yy;
+	}
+
+	$scope.getDate = function (date) {
+		return formatDate(new Date(parseInt(date)));
 	}
 }
 })();
