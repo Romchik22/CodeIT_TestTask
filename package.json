@@ -1,0 +1,20 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "angularApp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Romchik22/CodeIT_TestTask.git"
+  },
+  "author": "SobolRR",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Romchik22/CodeIT_TestTask/issues"
+  },
+  "homepage": "https://github.com/Romchik22/CodeIT_TestTask#readme"
+}
