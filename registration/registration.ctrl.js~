@@ -13,20 +13,20 @@ function Controller($scope, $http, $location, $httpParamSerializerJQLike) {
 	$scope.status = '';
 	$scope.clickSubmit = function () {
 		if(!$scope.registrationForm.$invalid) {
-			var registrationData  =  $httpParamSerializerJQLike({
+			var registrationData  ={
 				name: $scope.name,
 				secondname: $scope.secondName,
 				email: $scope.email,
 				gender: $scope.selectedSex,
 				pass: $scope.password
-			});
+			};
 
 			let config = {
 				headers : {
 					'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
 				}
 			}
-			$http.post('http://codeit.pro/frontTestTask/user/registration', registrationData, config)
+			$http.post('http://codeit.pro/frontTestTask/user/registration',  $httpParamSerializerJQLike(registrationData), config)
 			.success(function (data) {
 				$scope.status = data.status;
 				$scope.errorMessage = data.message;

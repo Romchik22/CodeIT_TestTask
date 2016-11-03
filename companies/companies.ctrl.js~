@@ -196,7 +196,7 @@ function Controller($scope, $http) {
 
 	$scope.getDate = function (milliseconds) {
 		var date = new Date(parseInt(milliseconds));
-	return (date.getDate() + '.' + (date.getMonth()+ 1) + '.' + date.getYear());	
+	return (date.getDate() + '.' + date.getMonth() + '.' + date.getYear());	
 	}
 }
 })();
