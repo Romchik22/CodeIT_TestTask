@@ -13,7 +13,7 @@ function Controller($scope, $http, $location, $httpParamSerializerJQLike) {
 	$scope.status = '';
 	$scope.clickSubmit = function () {
 		if(!$scope.registrationForm.$invalid) {
-			var registrationData  =  $httpParamSerializerJQLike({
+			let registrationData  =  $httpParamSerializerJQLike({
 				name: $scope.name,
 				secondname: $scope.secondName,
 				email: $scope.email,

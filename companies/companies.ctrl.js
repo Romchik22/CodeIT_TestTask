@@ -11,6 +11,9 @@ function Controller($scope, $http) {
 	$scope.myInterval = 3000;
 	$scope.chartFlag =  true;
 	$scope.partnersFlag = false;
+	$scope.percentSortFlag = false;
+	$scope.nameSortFlag = false;
+
 	function init () {
 	
 	$http.get('http://codeit.pro/frontTestTask/company/getList')
@@ -153,50 +156,35 @@ function Controller($scope, $http) {
 		})
 	}
 
-	function compare(a, b, property) {
-		if (a.property > b.property) {
-			return 1;
-		}
-		if (a.property < b.property) {
-			return -1;
-		}
-		return 0;
-	}
+	function compare (property, flag) {
+		 return function(a,b) {
+		 		//let number = flag ? 1 : -1; 
+
+				if (a[property] > b[property]) {
+					return flag ? 1 : -1;
+				}
+				if (a[property] < b[property]) {
+					return flag ? -1 : 1;
+				}
+			return 0;
+			}
+	};
 
 	$scope.sortPartnersByName = function () {
 		let temp = $scope.partners;
 		$scope.partners = {};
-		temp.sort(function(a, b, name){
-			if (a.name > b.name) {
-				return 1;
-			}
-			if (a.name < b.name) {
-				return -1;
-			}
-			return 0;
-		});
+		temp.sort(compare('name', $scope.nameSortFlag));
 		$scope.partners = temp;
+		$scope.nameSortFlag = !$scope.nameSortFlag;
 	}
 
 	$scope.sortPartnersByPercentage = function () {
 		let temp = $scope.partners;
 		$scope.partners = {};
-		temp.sort(function(a, b, percent){
-			if (a.percent > b.percent) {
-				return 1;
-			}
-			if (a.percent < b.percent) {
-				return -1;
-			}
-			return 0;
-		});
-
+		temp.sort(compare('percent', $scope.percentSortFlag));
 		$scope.partners = temp;
+		$scope.percentSortFlag = !$scope.percentSortFlag;
 	}
 
-	$scope.getDate = function (milliseconds) {
-		var date = new Date(parseInt(milliseconds));
-	return (date.getDate() + '.' + (date.getMonth()+ 1) + '.' + date.getYear());	
-	}
 }
 })();
